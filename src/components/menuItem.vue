@@ -1,5 +1,5 @@
 <template>
-  <div class="menu-item" @click="goToLoading">
+  <div @click="goToLoading">
     <wux-wing-blank size="default">
       <wux-card :title="getBusinessName">
         <div slot="body">{{getBusinessName}}</div>
@@ -29,7 +29,5 @@ export default {
 </script>
 
 <style>
-  .menu-item {
-    margin-bottom: 30rpx;
-  }
+
 </style>

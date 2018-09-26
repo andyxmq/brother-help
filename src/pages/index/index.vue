@@ -31,8 +31,10 @@ export default {
 }
 </script>
 
-<style>
-  .body {
-    padding: 30rpx;
+<style lang="scss">
+  .body{
+    >div {
+      margin-bottom: 30rpx;
+    }
   }
 </style>

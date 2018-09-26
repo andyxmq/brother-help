@@ -1,1 +1,7 @@
-{}
+{
+  "usingComponents": {
+      "wux-tabs": "../../static/wux/tabs/index",
+      "wux-tab": "../../static/wux/tab/index",
+      "wux-badge": "../../static/wux/badge/index"
+  }
+}
