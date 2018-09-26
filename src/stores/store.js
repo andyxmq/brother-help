@@ -9,6 +9,16 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   actions: {
     /**
+     * @description 获取首页菜单列表
+     */
+    async getMenuList () {
+      return [
+        {businessId: '1', businessName: '装卸业务', description: '各类大型装吊设备'},
+        {businessId: '2', businessName: '搬家业务', description: '各类大型装吊设备'},
+        {businessId: '3', businessName: '其它业务', description: '各类大型装吊设备'}
+      ]
+    },
+    /**
      * @description 获取首页视频播放列表 文章列表
      */
     async getIndexOriginData () {

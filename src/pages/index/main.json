@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "wux-floating-button": "../../static/wux/floating-button/index"
+    "wux-floating-button": "../../static/wux/floating-button/index",
+    "wux-card": "../../static/wux/card/index",
+    "wux-wing-blank": "../../static/wux/wing-blank/index"
   }
 }
