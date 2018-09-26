@@ -7,7 +7,9 @@
         <card :text="userInfo.nickName"></card>
       </div>
     </div>
-
+    <wux-floating-button>
+      a
+    </wux-floating-button>
     <div class="usermotto">
       <div class="user-motto">
         <card :text="motto"></card>
