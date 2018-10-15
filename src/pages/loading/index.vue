@@ -1,27 +1,53 @@
 <template>
   <div class="container">
-    <wux-tabs wux-class="bordered" auto="false">
-      <wux-tab key="tab1">
-          <wux-badge count="3">Tab 1</wux-badge>
-      </wux-tab>
-      <wux-tab key="tab2">
-          <wux-badge count="1024">Tab 2</wux-badge>
-      </wux-tab>
-      <wux-tab key="tab3">
-          <wux-badge dot>Tab 3</wux-badge>
-      </wux-tab>
+    <wux-tabs wux-class="bordered" auto="false" current="current" @change="onTabsChange">
+      <block v-for="(item,index) in tabs" :key="index">
+          <wux-tab :key="item.key" :title="item.title"></wux-tab>
+      </block>
     </wux-tabs>
+    <div class="main">
+      <div>图片轮播</div>
+      <div class="car-info">
+        车辆信息及价格标准
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   data () {
-    return {}
+    return {
+      current: 'eight',
+      tabs: []
+    }
+  },
+  methods: {
+    onTabsChange (e) {
+      console.log(e, 'aa')
+    },
+    async getCraneTypes () {
+      this.tabs = await this.$store.dispatch('getCraneType')
+    }
+  },
+  mounted () {
+    this.getCraneTypes()
   }
 }
 </script>
-<style>
-
+<style lang="scss">
+  .container {
+    .bordered {
+      border-bottom: 1rpx solid #ddd;
+    }
+    .main {
+      div {
+        background: #efefef;
+      }
+      .car-info {
+        margin-top: 10px;
+      }
+    }
+  }
 </style>
 
