@@ -87,6 +87,7 @@ export default {
       this.nickName = e.target && e.target.userInfo && e.target.userInfo.nickName
       wx.setStorageSync('nickName', this.nickName)
       this.getEmployeeInfo()
+      this.getQrCode()
     }
   },
   onShareAppMessage: function (res) { // menu的分享
