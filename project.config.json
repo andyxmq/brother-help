@@ -9,8 +9,8 @@
 	},
 	"miniprogramRoot": "./dist/",
 	"compileType": "miniprogram",
-	"appid": "wx25d9da02f764f8a7",
-	"projectname": "brother-help",
+	"appid": "wx00d26f5daa74e582",
+	"projectname": "business_card",
 	"condition": {
 		"search": {
 			"current": -1,

@@ -1,7 +1,7 @@
 {
-  "name": "brother-help",
+  "name": "business_card",
   "version": "1.0.0",
-  "description": "兄弟帮装卸 装运一体",
+  "description": "一点名片",
   "author": "andyxu",
   "private": true,
   "scripts": {
