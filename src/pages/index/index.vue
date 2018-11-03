@@ -29,14 +29,13 @@
       <div class="theme" >
         <img src="../../../static/images/theme@1x.png" style="width:477rpx;height:277rpx;"/>
       </div>
-      <div class="slogan">
+      <!-- <div class="slogan">
         <img src="../../../static/images/slogan@1x.png" style="width:272rpx;height:106rpx;"/>
-      </div>
+      </div> -->
       <div class="go-to-official" @click="goToOfficial">
         <p></p><span></span>
       </div>
-      <div class="login-button" v-if="!nickName">
-        一点员工登录
+      <div class="login-button" v-if="!nickName"> 
         <button open-type="getUserInfo" lang="zh_CN" @getuserinfo="onGotUserInfo">一点员工登录</button>
       </div>
     </div>
@@ -111,9 +110,6 @@ export default {
     if (options && options.nickName) {
       this.getEmployeeInfo(options.nickName)
     }
-  },
-  onUnload: function () {
-    this.userInfo = []
   }
 }
 </script>
@@ -204,22 +200,11 @@ export default {
         }
       }
       .login-button {
-        width: 464rpx;
-        left: 143rpx;
-        position: absolute;
-        bottom: 30rpx;
-        background: #c70020;
-        border-radius: 50rpx;
-        height: 52rpx;
-        padding:20rpx;
-        color: white;
-        text-align: center;
+        margin-top: 200rpx;
         button {
-          position: absolute;
-          width: 100%;
-          height: 52rpx;
-          z-index: 11;
-          opacity: 0;
+          width: 50%;
+          background: #e90026;
+          color: #fff;
         }
       }
     }
