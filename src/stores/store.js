@@ -24,8 +24,15 @@ export default new Vuex.Store({
       return result
     },
     async getQrCode (store, nickname, page) {
+      if (!nickname) {
+        return ''
+      }
+      let url = `${apiDomain}/api/wx/acodeunlimit?appid=wx00d26f5daa74e582&scene=${encodeURIComponent(nickname)}`
+      if (page) {
+        url = `${url}&page=${encodeURIComponent(page)}`
+      }
       const { status, result } = await request({
-        url: `${apiDomain}/api/wx/acodeunlimit?appid=wx00d26f5daa74e582&scene=${nickname}&page=`,
+        url,
         method: 'GET',
         header: {
           'content-type': 'application/json' // 默认值

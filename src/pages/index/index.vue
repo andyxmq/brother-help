@@ -48,8 +48,6 @@
 
 <script>
 export default {
-  components: {
-  },
   data () {
     return {
       userInfo: {},
@@ -81,9 +79,10 @@ export default {
         appId: 'wx58cac81e092ad159'
       })
     },
-    async getQrCode () {
-      // this.qrToken = await this.$store.dispatch('getQrCode', this.nickName, `pages/index/main?nickName=${this.nickName}`)
-      this.qrToken = await this.$store.dispatch('getQrCode', this.nickName)
+    async getQrCode (fromShareNickName) {
+      let nickName = fromShareNickName || this.nickName || ''
+      this.qrToken = await this.$store.dispatch('getQrCode', nickName, `pages/index/main?nickName=${nickName}`)
+      // this.qrToken = await this.$store.dispatch('getQrCode', nickName)
     },
     onGotUserInfo: function (e) {
       this.nickName = e.target && e.target.userInfo && e.target.userInfo.nickName
@@ -112,6 +111,7 @@ export default {
   onLoad (options) {
     if (options && options.nickName) {
       this.getEmployeeInfo(options.nickName)
+      this.getQrCode(options.nickName)
     }
   }
 }
