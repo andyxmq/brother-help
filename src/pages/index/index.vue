@@ -69,7 +69,7 @@ export default {
   methods: {
     async getEmployeeInfo (fromShareNickName) { // 获取一点员工信息
       var nickName = fromShareNickName || this.nickName || ''
-      let userInfo = await this.$store.dispatch('getUserInfo', encodeURIComponent(nickName))
+      let userInfo = await this.$store.dispatch('getUserInfo', nickName)
       if (userInfo.length === 1) {
         this.userInfo = userInfo[0]
       }
@@ -81,7 +81,7 @@ export default {
     },
     async getQrCode (fromShareNickName) {
       let nickName = fromShareNickName || this.nickName || ''
-      this.qrToken = await this.$store.dispatch('getQrCode', nickName, `pages/index/main?nickName=${nickName}`)
+      this.qrToken = await this.$store.dispatch('getQrCode', nickName, `pages/index/main`)
       // this.qrToken = await this.$store.dispatch('getQrCode', nickName)
     },
     onGotUserInfo: function (e) {

@@ -15,7 +15,7 @@ export default new Vuex.Store({
         return {}
       }
       const { result } = await request({
-        url: `${apiDomain}/wechat/business_card?nickname=${nickname}`,
+        url: `${apiDomain}/wechat/business_card?nickname=${encodeURIComponent(nickname)}`,
         method: 'GET',
         header: {
           'content-type': 'application/json' // 默认值
