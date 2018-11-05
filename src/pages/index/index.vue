@@ -8,9 +8,11 @@
         </div>
         <div class="user-name">{{userInfo.name}}</div>
         <div class="user-title">
-          {{userInfo.depart}}
+          <span>{{userInfo.depart}}</span>
           <span class="divider" v-if="userInfo.depart"></span>
-          {{userInfo.position}}
+          <span v-for="(item,index) in userPosition" :key="index">
+            <span>{{item}}</span><br/>
+          </span>
         </div>
         <div class="user-detail">
           <div class="phone">{{userInfo.phone}}</div>
@@ -72,6 +74,10 @@ export default {
     },
     showBotton () {
       return this.nickNameIsEmpty || !this.nickName
+    },
+    userPosition () {
+      let userPosition = this.userInfo.position
+      return userPosition && userPosition.split(' ')
     }
   },
   methods: {
@@ -143,7 +149,8 @@ export default {
   .divider {
     display: inline-block;
     height: 28rpx;
-    margin-bottom: -2rpx; 
+    margin: 0 10rpx 0;
+    margin-bottom: -3rpx; 
     border-left: 1rpx solid #1b1b1b;
   }
   .container {
@@ -215,7 +222,6 @@ export default {
       box-sizing: border-box;
       width: 750rpx;
       height: 100%;
-      margin-top: 9rpx;
       overflow: hidden;
       .second-main {
         .theme {
