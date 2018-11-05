@@ -35,6 +35,9 @@
         <div class="theme" >
           <img src="../../../static/images/theme@1x.png" style="width:477rpx;height:277rpx;"/>
         </div>
+        <div class="slogan" v-if="nickName">
+          <img src="../../../static/images/slogan@1x.png" style="width:272rpx;height:106rpx;"/>
+        </div>
         <div class="go-to-official" @click="goToOfficial">
           <p></p><span></span>
         </div>
@@ -191,6 +194,11 @@ export default {
           margin: 0 136rpx;
           width: 750rpx;
           height: 277rpx;
+        }
+        .slogan {
+          margin-top: 171rpx;
+          padding-left: 239rpx;
+          height: 106rpx;
         }
         .go-to-official {
           background:#e90026;
