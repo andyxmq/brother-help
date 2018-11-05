@@ -10,12 +10,17 @@ export default new Vuex.Store({
     /**
      * @description 获取首页菜单列表
      */
-    async getUserInfo (store, nickname) {
-      if (!nickname) {
-        return {}
+    async getUserInfo (store, {nickname, phone}) {
+      let url = `${apiDomain}/wechat/business_card?`
+      if (phone !== undefined && phone !== 'undefined') {
+        url = `${url}phone=${phone}`
+      } else if (nickname !== undefined && phone !== 'undefined') {
+        url = `${url}nickname=${nickname}`
+      } else {
+        return []
       }
       const { result } = await request({
-        url: `${apiDomain}/wechat/business_card?nickname=${encodeURIComponent(nickname)}`,
+        url,
         method: 'GET',
         header: {
           'content-type': 'application/json' // 默认值
@@ -23,11 +28,11 @@ export default new Vuex.Store({
       })
       return result
     },
-    async getQrCode (store, nickname, page) {
-      if (!nickname) {
+    async getQrCode (store, phone, page) {
+      if (!phone) {
         return ''
       }
-      let url = `${apiDomain}/api/wx/acodeunlimit?appid=wx00d26f5daa74e582&scene=${encodeURIComponent(nickname)}`
+      let url = `${apiDomain}/api/wx/acodeunlimit?appid=wx00d26f5daa74e582&scene=${phone}`
       if (page) {
         url = `${url}&page=${encodeURIComponent(page)}`
       }
