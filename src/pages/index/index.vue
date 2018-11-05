@@ -77,7 +77,7 @@ export default {
     },
     userPosition () {
       let userPosition = this.userInfo.position
-      return userPosition && userPosition.split(' ')
+      return userPosition && userPosition.split(' ').filter(item => item !== '')
     }
   },
   methods: {
