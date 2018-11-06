@@ -19,6 +19,9 @@
           <div class="email">{{userInfo.email}}</div>
           <div class="address">{{userInfo.address}}</div>
         </div>
+        <div class="user-handle" @click="addPhoneContact">
+          <img src="../../../static/images/icon_txl@1x.png" style="width: 23rpx; height: 23rpx;"/> <span>导入到通讯录</span>
+        </div>
       </div>
       <div class="qr-code" v-if="qrToken">
         <img :src="qrToken" style="width:194rpx;height:194rpx;margin-left:278rpx;"/>
@@ -29,9 +32,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="user-handle">
-      <img src="../../../static/images/icon_txl@1x.png" style="width: 23rpx; height: 23rpx;"/> <span>导入到通讯录</span>
-    </div> -->
     <div class="second">
       <img src="../../../static/images/backgrand_2@1x.png" style="height: 100%; width:100%;position:absolute;z-index:-11;"/>
       <div class="second-main" :style="showBotton?'padding-top: 314rpx':'padding-top:334rpx'">
@@ -101,6 +101,24 @@ export default {
       this.nickName = e.target && e.target.userInfo && e.target.userInfo.nickName
       wx.setStorageSync('nickName', this.nickName)
       this.getEmployeeInfo()
+    },
+    addPhoneContact () {
+      // console.log(this.userInfo, '')
+      let {address, depart, email, name, phone, position, wx_nickname: wxNickname} = this.userInfo || {}
+      let title = ''
+      if (depart) {
+        title = `${depart}-`
+      }
+      title = `${title}${position}`
+      wx.addPhoneContact({
+        firstName: name,
+        organization: '一点资讯',
+        addressCity: address,
+        weChatNumber: wxNickname,
+        mobilePhoneNumber: phone,
+        title,
+        email
+      })
     }
   },
   onShareAppMessage: function (res) { // menu的分享
@@ -185,9 +203,10 @@ export default {
           margin-top: 40rpx;
           color: #1b1b1b;
           font-size: 28rpx;
+          height: 110rpx;
         }
         .user-detail {
-          margin-top: 140rpx;
+          margin-top: 84rpx;
           font-size: 28rpx;
           color: #1b1b1b;
         }
