@@ -11,11 +11,12 @@ export default {
 }
 </script>
 
-<style>
-.container {
+<style >
+.root {
   height: 100%;
   box-sizing: border-box;
   width: 100%;
+  padding: 0;
 }
 /* this rule will be remove */
 * {

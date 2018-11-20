@@ -3,6 +3,7 @@
     <div class="first" v-if="!nickNameIsEmpty">
       <img src="../../../static/images/backgrand_1@1x.png" style="height: 100%;width:100%;position:absolute;z-index:-11;"/>
       <div class="business-card">
+        <img-button text="测试"/>
         <div class="company-logo">
           <img src="../../../static/images/icon_logo@1x.png" style="height: 56rpx;width:229rpx;"/>
         </div>
@@ -53,7 +54,11 @@
 </template>
 
 <script>
+import ImgButton from '@/components/img-button.vue'
 export default {
+  components: {
+    ImgButton
+  },
   data () {
     return {
       userInfo: {},
@@ -119,6 +124,9 @@ export default {
         title,
         email
       })
+    },
+    handleScroll () {
+      console.log('aaa')
     }
   },
   onShareAppMessage: function (res) { // menu的分享
@@ -159,6 +167,9 @@ export default {
     this.userInfo = {}
     this.nickname = ''
     this.phone = ''
+  },
+  onPageScroll () {
+    this.handleScroll()
   }
 }
 </script>
