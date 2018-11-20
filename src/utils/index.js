@@ -1,3 +1,5 @@
+var Promise = require('es6-promise').Promise
+
 function formatNumber (n) {
   const str = n.toString()
   return str[1] ? str : `0${str}`
@@ -18,7 +20,22 @@ export function formatTime (date) {
   return `${t1} ${t2}`
 }
 
+export function wxPromisify (fn) {
+  return function (obj = {}) {
+    return new Promise((resolve, reject) => {
+      obj.success = function (res) {
+        resolve(res)
+      }
+      obj.fail = function (res) {
+        reject(res)
+      }
+      fn(obj)
+    })
+  }
+}
+
 export default {
   formatNumber,
-  formatTime
+  formatTime,
+  wxPromisify
 }
